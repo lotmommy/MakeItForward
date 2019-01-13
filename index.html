@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>SignInPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="MIFCSS.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
+    authDomain: "makeitforward-fb720.firebaseapp.com",
+    databaseURL: "https://makeitforward-fb720.firebaseio.com",
+    projectId: "makeitforward-fb720",
+    storageBucket: "makeitforward-fb720.appspot.com",
+    messagingSenderId: "668998987480"
+  };
+  firebase.initializeApp(config);
+</script>
+</head>
+<body>
+<div id="MenuBar">
+  <a id="Home"class="active" href="#"><i class="fa fa-home"></i></a> 
+  <a id="Search" href="#"><i class="fa fa-search"></i></a> 
+  <a id="Add" href="#"><i class="fa fa-plus-square"></i></a> 
+  <a id="User" href="#"><i class="fa fa-user-circle-o"></i></a> 
+</div>
+<button class="loginBtn loginBtn--google">
+  Login with Google
+</button>
+
+<script>
+	$(".loginBtn").on('click', function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+  	// This gives you a Google Access Token. You can use it to access the Google API.
+  	var token = result.credential.accessToken;
+  	// The signed-in user info.
+  	var user = result.user;
+	  // ...
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  alert(errorMessage);
+	  // ...
+	});
+    //(... rest of your JS code)
+});
+
+</script>
+</body>
+</html>
