@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Share</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+	<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+    <script>
+    	$("a[href='http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com']").attr('href', 'http://www.facebook.com/sharer.php?u=' + window.location.href)
+
+    </script>
+</body>
+</html>
