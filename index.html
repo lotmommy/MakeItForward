@@ -17,21 +17,31 @@
     messagingSenderId: "668998987480"
   };
   firebase.initializeApp(config);
-</script>
+  </script>
+<style>
+
+	html, body {
+	  height:100%;
+	  padding: 0;
+	  margin: 0;
+	}
+
+	html {
+	  background:url(https://i.imgur.com/B8IOjM7.jpg) no-repeat center center fixed;
+	  background-size: cover;
+	}
+
+	body {
+	  background:rgba(255,255,255,0.5); /* applies a 50% transparent white background */
+	  text-align:center;
+	}
+</style>
 </head>
 <body>
-<div id="MenuBar">
-  <a id="Home"class="active" href="#"><i class="fa fa-home"></i></a> 
-  <a id="Search" href="#"><i class="fa fa-search"></i></a> 
-  <a id="Add" href="#"><i class="fa fa-plus-square"></i></a> 
-  <a id="User" href="#"><i class="fa fa-user-circle-o"></i></a> 
+<div class="image"style="top:17em">
 </div>
-<button class="loginBtn loginBtn--google">
-  Login with Google
-</button>
-
 <script>
-	$(".loginBtn").on('click', function(event){
+	$(".image").on('click', function(event){
     event.stopPropagation();
     event.stopImmediatePropagation();
 
@@ -58,5 +68,6 @@
 });
 
 </script>
+
 </body>
 </html>
