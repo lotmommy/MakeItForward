@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel = "stylesheet" href="MIF.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Secular+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
+    authDomain: "makeitforward-fb720.firebaseapp.com",
+    databaseURL: "https://makeitforward-fb720.firebaseio.com",
+    projectId: "makeitforward-fb720",
+    storageBucket: "makeitforward-fb720.appspot.com",
+    messagingSenderId: "668998987480"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id = "list">
+		<div class = "projectImagesOutline">
+			<img class = "projectImages" src = "http://2.bp.blogspot.com/-UwCvb_IE2ac/Udd-FMbTHBI/AAAAAAAAGm4/lx_eeFhiAcY/s1600/SANY0043-1.JPG">
+			<div class="projectName">שולחן עבודה מעץ</div>
+		</div>
+
+		
+	</div>
+	<button onclick="goToCreatePage()" class="homePageButton" >להעלות פרוייקט חדש</button>
+
+	<script>
+		
+		let dbRef = firebase.database().ref("Users/USERID");
+		dbRef.on("value", function(snapshot){
+			//console.log("Database was changed", snapshot.val());
+			$("#list").html(""); //clear all inner tags
+
+			snapshot.forEach(function(childSnap){
+				console.log(childSnap.key + ": " + childSnap.val());
+				var o = childSnap.val()
+				PROJECTIMAGE=o.METADATA.FinishImage;
+				$("#list").append("<div class='projectImagesOutline'> <a href = 'MIFindividualCraftPage-updated.html?id=" + childSnap.key + "'> <img class='projectImages' src ='"+ PROJECTIMAGE +"''> <div class = 'projectName'>" + o.METADATA.CraftTitle + "</a></div>");
+				$("#list").append('<div class = "projectImagesOutline"><img class = "projectImages" src = "https://i.pinimg.com/originals/4c/d3/1e/4cd31e806aed38bacb0536705064055d.jpg"><div class="projectName">מחזיק צמחים</div></div>')
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+html {
+ 
+  background-color: white;
+}
+
+
+
+
+body{
+	margin: 0;
+	text-align: center;
+}
+
+.projectImages{
+	width: 85%;
+	margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.finalProjectImages{
+	width: 100%;
+	margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.projectImagesOutline{
+	margin: .5em;
+	background-color: white;
+	text-align: center;
+	border: 1px solid darkgray;
+}
+
+.stepsImagesOutline{
+	margin: .5em;
+	background-color: white;
+	text-align: center;
+	border-top: 1px solid darkgray;
+}
+
+.projectName{
+	padding-bottom: .5em;
+	font-size: 1.25em;
+	color: black;
+	font-family: 'Secular One', sans-serif;
+}
+
+#craftTitle{
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: .25em;
+    margin-top: .25em;
+    font-family: 'Secular One', sans-serif;
+}
+
+#crafterDiv{
+	text-align: right;
+	margin-right: .2em;
+}
+
+#crafterName{
+	text-align: right;
+	font-size: 1.5em;
+	margin-bottom: .25em;
+    margin-top: .25em;
+    vertical-align: super;
+    font-family: 'Secular One', sans-serif;
+}
+
+#craftDescription{
+	text-align: right;
+	font-size: 1em;
+	margin: .25em;
+	margin-right: .2em;
+	font-family: 'Tinos', serif;
+}
+
+#userIcon{
+	font-size:40px;
+	color:black;
+}
+
+#materialsList{
+	text-align: right;
+	list-style: none;
+	margin-right: 1em;
+}
+
+#materialsDiv{
+	text-align: right;
+	margin-right: .2em;
+}
+
+li{
+	background-position: 100% .4em;
+	font-family: 'Tinos', serif;
+}
+
+#materialsTitle{
+	margin-bottom: -.75em;
+	font-size: 1.5em;
+	font-family: 'Secular One', sans-serif;
+}
+
+.stepNumber{
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: right;
+	margin-right: 1.2em;
+	font-family: 'Secular One', sans-serif;
+
+}
+
+.instruction{
+	font-size: 1.5em;
+	padding-bottom: .5em;
+	text-align: right;
+    margin-right: 1.2em;
+    font-family: 'Tinos', serif;
+
+}
+
+button.homePageButton { 
+	width: 100%;
+    font-size: 1.75em;
+  	border-radius: 100rem;
+  	padding: 1rem;
+  	font-family: 'Secular One', sans-serif;
+  	padding: .5rem 3rem;
+  	color:black;
+  	border: solid 3px transparent;
+  	background-image: linear-gradient(rgba(0, 144, 255, 1), rgba(20, 161, 1, 1)), linear-gradient(101deg, #0090ff, #14a101);
+  	background-origin: border-box;
+  	background-clip: content-box, border-box;
+  	box-shadow: 2px 1000px 1px #fff inset;
+  	position: sticky;
+    bottom: 0;
+}
+
+a{
+	color: black;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
