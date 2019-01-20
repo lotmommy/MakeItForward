@@ -1,78 +1,4 @@
 
-#MenuBar {
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  background-color: #4986b2; 
-  background-image: linear-gradient(#4986b2,  #5fa149);
-}
-#uploadhover:hover{
-	background-color:red;
-}
-#SearchBar{
-	float: left;
-    margin-top: .8%;
-}
-
-html{
-	background-color:#cfcfcf;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
 #Search,#Add,#User{
 	padding-right:8%;
 	color:white;
@@ -84,113 +10,276 @@ body {
 	font-size:2.5em;
 	color:white;
 }
-.FormBox{
-	background-color:white;
-	margin: 3%;
+#FormBox{
     height: 90%;
 	padding:2%;
 }
-.loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
-  outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
-}
-.loginBtn--google {
-  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
-  background: #DD4B39;
-}
-.loginBtn--google:before {
-  border-right: #BB3F30 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
-}
-.loginBtn--google:hover,
-.loginBtn--google:focus {
-  background: #E74B37;
-}
+
 #GoogleSignIn{
 	text-align:center;
 }
 
 #InputCraft{
 	margin-bottom:8%;
-	text-align:right;
+	text-align:center;
 	display:grid;
-	font-size: 1.7em;
+	font-size: 2.5em;
+	font-family: 'Secular One', sans-serif;
 }
 #InputDescription{
 	margin-bottom:8%;
-	text-align:right;
+	text-align:center;
 	display:grid;
-	font-size: 1.7em;
+	font-size: 2.5em;
+	font-family: 'Secular One', sans-serif;
 }
 #InputTool{
 	margin-bottom:8%;
-	text-align:right;
+	text-align:center;
 	display:grid;
-	font-size: 1.7em;
+	font-size: 2.5em;
+	font-family: 'Secular One', sans-serif;
 }
-#InputStepImage{
+.InputStepImage{
 	margin-bottom:8%;
 	text-align:right;
 	display:grid;
-	font-size: 1.7em;
+	font-size: 1.5em;
+	font-family: 'Secular One', sans-serif;
 }
-#InputStepInstructions{
+.InputFinalImage{
 	margin-bottom:8%;
-	text-align:right;
-	display:grid;
-	font-size: 1.7em;
+	text-align:center;
+	font-size: 2.5em;
+	font-family: 'Secular One', sans-serif;
+	margin-top: 8%;
 }
-#AddInputButton{
-	text-align:right;
+.InputStepInstructions{
+	margin-bottom: 8%;
+    text-align: center;
+    display: grid;
+    font-size: 2.5em;
+    font-family: 'Secular One', sans-serif;
 }
+
 #AddToolButton{
 	text-align:right;
     margin-top: -4%;
     margin-bottom: 4%;
 
 }
-#UploadCraftButton{
-	text-align:center;
-	background-color: white;
-    border: 2px solid #5fa149;
-	font-size: 1.7em;
-}
+
 #AddStepSquare{
 	color:#4986b2;
 	font-size:2em;
 }
-#AddStepText{
-	font-size:1.5em;
+.AddInputButton{
+	text-align: center;
+}
+.AddStepText{
+	font-size:1em;
+	font-family: 'Secular One', sans-serif;
+    background-color: #14a101; 
+	color:white;
+    border: 2px solid;
 }
 #AddToolSquare{
 	color:#4986b2;
 	font-size:1em;
 }
+#AddToolText{
+	font-size:larger;
+	font-family: 'Secular One', sans-serif;
+    background-color: #14a101; 
+	color:white;
+    border: none;
+}
 #UploadCraft{
 	text-align:center;
+}
+#CraftTitle{
+	font-size:70%;
+	margin: auto;
+    border: none;
+    border-bottom: 2px solid #14a101;
+}
+#CraftDescription{
+	font-size:70%;
+	margin: auto;
+    border: none;
+    border-bottom: 2px solid #14a101;
+}
+div.image {
+   content:url(https://www.codenameone.com/img/blog/google-sign-in.png);
+}​
+.container {
+  width: 100%;
+}
+
+.progressbar {
+  counter-reset: step;
+  padding-left: 5%;
+}
+.progressbar li {
+  list-style: none;
+  display: inline-block;
+  width: 30.33%;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Tinos', serif;
+  font-size: x-large;
+}
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  line-height : 30px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  background-color: #fff;
+}
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  top: 15px;
+  left: -50%;
+  z-index : -1;
+}
+.progressbar li:first-child:after {
+  content: none;
+}
+.progressbar li.active {
+  color: green;
+}
+.progressbar li.active:before {
+  border-color: green;
+} 
+.progressbar li.active + li:after {
+  background-color: green;
+}
+#FormBox2{
+	display:none;
+}
+#FormBox3{
+	display:none;
+}
+.GoBack{
+	background-color:white;
+	border:none;
+	color:#14a101;
+	font-size: x-large;
+	float: left;
+}
+.twoToneCenter {
+  text-align: center;
+  margin: 1em 0;
+      position: sticky;
+    bottom: 0;
+    left: 100;
+}
+.twoToneButton {
+  display: inline-block;
+  outline: none;
+  position: relative;
+}
+
+.twoToneButton:active {
+  box-shadow: 0 0 10px #080808 inset, 0px 1px 0 #3b3b3b;
+  color: #ffffff;
+  background: #080808;
+  background: linear-gradient(to bottom, #3b3b3b 0%, #2e2e2e 50%, #141414 51%, #080808 100%);
+}
+.twoToneButton.spinning {
+  background-color: #212121;
+  padding-right: 30px;
+}
+.twoToneButton.spinning:after {
+  content: '';
+  right: 6px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-radius: 50%;
+          animation: rotate360 0.5s infinite linear, exist 0.1s forwards ease;
+}
+.twoToneButton.spinning:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  right: 6px;
+  top: 50%;
+  position: absolute;
+  border: 9px solid #000000;
+  border-right: 9px solid #14a101;
+  -webkit-animation: rotate360 0.5s infinite linear, exist 0.1s forwards ease;
+          animation: rotate360 0.5s infinite linear, exist 0.1s forwards ease;
+}
+@-webkit-keyframes rotate360 {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate360 {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes exist {
+  100% {
+    width: 15px;
+    height: 15px;
+    margin: -8px 5px 0 0;
+  }
+}
+@keyframes exist {
+  100% {
+    width: 15px;
+    height: 15px;
+    margin: -8px 5px 0 0;
+  }
+}
+body {
+  margin:0 auto;
+}
+button.button { 
+	width: 100%;
+    font-size: 4em;
+  border-radius: 100rem;
+  padding: 1rem;
+  font-family: 'Secular One', sans-serif;
+  padding: .5rem 3rem;
+  color:black;
+  border: solid 3px transparent;
+  background-image: linear-gradient(rgba(0, 144, 255, 1), rgba(20, 161, 1, 1)), linear-gradient(101deg, #0090ff, #14a101);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+        position: sticky;
+    bottom: 0;
+    left: 100;
+}
+}
+.ToolsNeeded1{
+	font-size: 70%;
+    margin: auto;
+    border: none;
+    border-bottom: 2px solid #14a101;
+}
+.inputStepInstructionsTex{
+	border-bottom: 2px solid #14a101;
+	font-size: 70%;
+    margin: auto;
+    border: none;
 }
