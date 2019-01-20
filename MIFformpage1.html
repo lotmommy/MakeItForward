@@ -1,0 +1,316 @@
+<html>
+<head>
+	<title>FormPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="MIFCSS.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Secular+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
+    authDomain: "makeitforward-fb720.firebaseapp.com",
+    databaseURL: "https://makeitforward-fb720.firebaseio.com",
+    projectId: "makeitforward-fb720",
+    storageBucket: "makeitforward-fb720.appspot.com",
+    messagingSenderId: "668998987480"
+  };
+  firebase.initializeApp(config);
+</script>
+<style>
+	#ToolsNeeded1{
+	font-size: 70%;
+    margin: auto;
+    border: none;
+    border-bottom: 2px solid #14a101;
+}
+#inputStepInstructionsText{
+	border-bottom: 2px solid #14a101;
+	font-size: 70%;
+    margin: auto;
+    border: none;
+}
+</style>
+</head>
+<body onload="drawStep()">
+    <div class="container">
+      <ul class="progressbar">
+        <li id= "Step1Icon"class="active">שלב 1</li>
+        <li id= "Step2Icon">שלב 2</li>
+        <li id= "Step3Icon">שלב 3</li>
+      </ul>
+    </div>
+<div id="FormBox">
+
+<div id="InputCraft"> 
+<span>שם הפרויקט </span>
+<input type="text" id="CraftTitle">
+</div>
+<div  id="InputDescription">
+<span>תיאור פרויקט </span>
+<input type="text" id="CraftDescription">
+</div>
+<div class="InputFinalImage">
+<span>תמונה אחרונה</span>
+<div>
+  <label for="files" id="FinalPicture" class="btn" style="font-size: x-large; margin-right: 2%; color: #0090ff;"><i class="fa fa-upload"></i> בחר תמונה</label>
+  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file">
+</div>
+</div>
+<button onclick="ShowStep2()" class="button" id="NextButton">הבא</button>
+
+</div>
+
+<div id="FormBox2">
+<div  id="InputTool" onload="drawTool()">
+<span>כלים הדרושים</span>
+<input type="text" id="ToolsNeeded1" class="ToolsNeeded1">
+</div>
+<div id="AddToolButton">
+		<button id="AddToolText" onclick="drawTool()">הוסף כלי</button>
+</div>
+<button class="GoBack"  onClick="ShowStep1()"><<<</button>
+<button onclick="ShowStep3()" class="button"id="NextButton">הבא</button>
+</div>
+
+<div id="FormBox3">
+<div id="BenIsHere" >
+</div>
+<div class="AddInputButton">
+	<button class="AddStepText" onclick="drawStep()" >הוסף שלב</button>
+</div>
+<div id="UploadCraft">
+<button class="GoBack" onClick="ShowStep2()"><<<</button>
+</div>
+<div class="twoToneCenter">
+<button class="twoToneButton button" id="UploadCraftButton">הוסף</button>
+</div>
+</div>
+<script>
+$("#files").change(function() {
+  filename = this.files[0].name
+  console.log(filename);
+});
+$(function(){
+    
+    var twoToneButton = document.querySelector('.twoToneButton');
+    
+    twoToneButton.addEventListener("click", function() {
+        twoToneButton.innerHTML = "טוען";
+        twoToneButton.classList.add('spinning');
+        
+      setTimeout( 
+            function  (){  
+                twoToneButton.classList.remove('spinning');
+                twoToneButton.innerHTML = "הוסף";
+                
+            }, 60000);
+    }, false);
+    
+});
+
+function ShowStep2() {
+	$("#FormBox").hide();
+	$("#FormBox2").show();
+	$("#FormBox3").hide();
+	$("#Step2Icon").addClass("active");
+	$("#Step1Icon").removeClass("active");
+	$("#Step3Icon").removeClass("active");
+	
+}
+function ShowStep3() {
+	$("#FormBox").hide();
+	$("#FormBox2").hide();
+	$("#FormBox3").show();
+	$("#Step3Icon").addClass("active");
+	$("#Step1Icon").removeClass("active");
+	$("#Step2Icon").removeClass("active");
+	
+}
+function ShowStep1() {
+	$("#FormBox").show();
+	$("#FormBox2").hide();
+	$("#FormBox3").hide();
+	$("#Step1Icon").addClass("active");
+	$("#Step2Icon").removeClass("active");
+	$("#Step3Icon").removeClass("active");
+	
+}
+let currentNumberOfSteps = 1;
+let currentNumberOfTools = 1;
+
+
+
+function drawStep(){
+
+	//defining constants for later use as ID's
+	//InputStepImage_1
+	const imageStepId = "InputStepImage _"+currentNumberOfSteps;
+	const imageUploadId= "InputUploadImage_"+currentNumberOfSteps;
+	const inputStepInstructions = "InputStepInstructions_"+currentNumberOfSteps;
+	const inputStepInstructionsText = "inputStepInstructionsText_"+currentNumberOfSteps;
+
+	//Defining the reusable parts for later
+	let inputImageTemplate = '<div class="InputStepImage" id="'+imageStepId+'" ><span>תמונת שלב '+currentNumberOfSteps+'</span><input style="margin-left: 50%;" class="StepImage" type="file" id="'+imageUploadId+'"></div>';
+	let inputTextTemplate = '<div  id="'+inputStepInstructions+'" class="InputStepInstructions"><span>הוראות לשלב '+currentNumberOfSteps+'</span><textarea id="'+inputStepInstructionsText+'" class="StepText"></textarea></div>';
+	let inputAddStepButtonTemplate = '<div id="AddInputButton"><span id="AddStepText">הוסף שלב</span><i id="AddStepSquare" class="fa fa-plus-square" onclick="drawStep()"></i></div>';
+
+	//Adding 1 to current step
+	currentNumberOfSteps++;
+
+
+	//appending the item to the page
+	$("#BenIsHere").append(inputImageTemplate+inputTextTemplate);
+
+	//updating the values on the upload inputAddStepButtonTemplate
+}
+
+function drawTool(){
+	let inputToolTemplate = '<span>'+currentNumberOfTools+' כלים הדרושים</span><input type="text" id="Tool_'+currentNumberOfTools+' class="tooltext">';
+	$("#InputTool").append(inputToolTemplate);
+	currentNumberOfTools++;
+}
+
+function uploadAllImages(stepNum){
+	let storage = firebase.storage();
+
+	
+	for (var i = 1; i < stepNum+1; i++) {
+		file = $("#InputUploadImage_"+i).prop('files')[0];
+		console.log(file);
+		let storageRef = storage.ref("USER_ID_GOES_HERE/PROJECT_ID_GOES_HERE/Images/Step"+i+"Image");
+		storageRef.put(file);
+	}
+	file = $(".FinalPicture").prop('files')[0];	
+	let storageRef = storage.ref("USER_ID_GOES_HERE/PROJECT_ID_GOES_HERE/Images/FinalPicture");
+	storageRef.put(file);
+	
+
+}
+let addCraftswithPush= function(CraftDescription,CraftName,numSteps,numSupplies){
+		let db=firebase.database().ref("/Users");
+		let obj={
+			CraftDescription:CraftDescription,
+			CraftName:CraftName
+			
+		};
+		let steps={
+			Step0:$("#inputStepInstructionsText_1").val()
+		};
+		for (var i = 1; i <=currentNumberOfSteps; i++) {
+			steps["Step" + i] = $("#inputStepInstructionsText_" + i).val();
+		}
+		let tools={
+			Supply0:$("#ToolsNeeded1").val()
+		};
+		for (var i = 1; i <= currentNumberOfTools; i++) {
+			tools["Supply" + i] = $("#Tool_" + i).val();
+		}
+		obj.SuppliesNeeded = tools;
+		obj.StepByStep = steps;
+		db.push(JSON.parse(JSON.stringify(obj)));
+		
+};
+
+$("#UploadCraftButton").click(function(){
+	uploadAllImages(currentNumberOfSteps-1);
+	let CraftName = $("#CraftTitle").val();
+	let CraftDescription = $("#CraftDescription").val();
+	let SuppliesNeeded = $("#Tool_").val(); 
+	let Step1Image = $("#InputStepImage_").val();
+	let Step1 = $("#inputStepInstructionsText_").val();
+	addCraftswithPush(CraftDescription,CraftName,1, 0);
+});
+	
+
+	function generateJSON(){
+
+		//object lists for Steps, Tools, and Meta
+		let Steps = {};
+		let Tools = {};
+		let Meta = {};
+
+
+		//grabbing nessicary data from 
+		$(".StepImage").each(function(index){
+			console.log($(this));
+		})
+		$(".StepText").each(function(index){
+			console.log($(this).val());
+			Steps["Step"+(index+1)]=$(this).val();
+		})
+		$('input[id^="Tool"]').each(function(index){
+			console.log($(this).val());
+			Tools["Tool"+(index+1)]=$(this).val();
+		})
+
+
+		auth = firebase.auth();
+
+		//setting the gathered data
+		Meta.CraftTitle = $("#CraftTitle").val();
+		Meta.CraftDescription = $("#CraftDescription").val();
+		Meta.stepNum = Object.keys(Steps).length;
+		Meta.UserOwner = auth.currentUser.uid;
+		console.log(Steps,Tools);
+
+		//putting the data into the JSON tree properly formatted
+		currentItem.Users.USERID.PROJECTID.STEPS = JSON.parse(JSON.stringify(Steps));
+		currentItem.Users.USERID.PROJECTID.STEP_IMAGES = JSON.parse(JSON.stringify(Steps));
+		currentItem.Users.USERID.PROJECTID.TOOLS = JSON.parse(JSON.stringify(Tools));
+		currentItem.Users.USERID.PROJECTID.METADATA = JSON.parse(JSON.stringify(Meta));
+
+
+		//uploads the data
+		db = firebase.database();
+		dbref = db.ref('Users/' + firebase.auth().currentUser.uid);
+		dbref.push(currentItem.Users.USERID.PROJECTID);
+
+
+
+
+
+	}
+
+	//visual tree
+	let currentItem = {
+		Users:{
+			USERID:{
+				PROJECTID:{
+					METADATA:{
+						UserOwner: "",
+						CraftTitle:"Place holder Title",
+						CraftDescription:"Place holder Description",
+						StepNum: 5,
+						FinalImage:"placeholderURL"
+					},
+					STEP_IMAGES:{
+
+					},
+					STEPS:{
+
+					},
+					TOOLS:{
+
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+
+</script>
+</body>
+</html>
