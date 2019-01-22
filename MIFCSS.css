@@ -1,4 +1,5 @@
 
+
 #Search,#Add,#User{
 	padding-right:8%;
 	color:white;
@@ -23,95 +24,104 @@
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
-	font-size: 2.5em;
-	font-family: 'Secular One', sans-serif;
+	font-size: 1.75em;
+	font-family: 'Assistant', sans-serif;
+	border: 1px solid #86b4e8;
+	
 }
 #InputDescription{
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
-	font-size: 2.5em;
-	font-family: 'Secular One', sans-serif;
+	font-size: 1.75em;
+	font-family: 'Assistant', sans-serif;
+	border: 1px solid #86b4e8;
 }
 #InputTool{
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
-	font-size: 2.5em;
-	font-family: 'Secular One', sans-serif;
+	font-size: 1.75em;
+	font-family:  'Assistant', sans-serif;
+	
 }
 .InputStepImage{
-	margin-bottom:8%;
 	text-align:right;
 	display:grid;
-	font-size: 1.5em;
-	font-family: 'Secular One', sans-serif;
+	font-size: 1.75em;
+	font-family: 'Assistant', sans-serif;
 }
 .InputFinalImage{
 	margin-bottom:8%;
 	text-align:center;
-	font-size: 2.5em;
-	font-family: 'Secular One', sans-serif;
+	font-size: 1.75em;
+	font-family: 'Assistant', sans-serif;
 	margin-top: 8%;
+	border: 1px solid #86b4e8;
 }
 .InputStepInstructions{
 	margin-bottom: 8%;
     text-align: center;
     display: grid;
-    font-size: 2.5em;
-    font-family: 'Secular One', sans-serif;
+    font-size: 1.75em;
+    font-family: 'Assistant', sans-serif;
 }
 
 #AddToolButton{
-	text-align:right;
-    margin-top: -4%;
-    margin-bottom: 4%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10%;
 
 }
 
 #AddStepSquare{
-	color:#4986b2;
+	color:#92db8e;
 	font-size:2em;
 }
 .AddInputButton{
 	text-align: center;
 }
 .AddStepText{
-	font-size:1em;
+	font-size:3em;
 	font-family: 'Secular One', sans-serif;
-    background-color: #14a101; 
+    background-color: #92db8e; 
 	color:white;
-    border: 2px solid;
+    border: none;
+	width:1.5em;
+	border-radius:100rem;
 }
 #AddToolSquare{
-	color:#4986b2;
+	color:#92db8e;
 	font-size:1em;
 }
 #AddToolText{
-	font-size:larger;
-	font-family: 'Secular One', sans-serif;
-    background-color: #14a101; 
+	font-size:3em;
+	font-family: 'Assistant', sans-serif;
+    background-color: #92db8e; 
 	color:white;
     border: none;
+	width:1.5em;
+	border-radius:100rem;
+	
 }
 #UploadCraft{
 	text-align:center;
 }
 #CraftTitle{
-	font-size:70%;
+	font-size:x-large;
 	margin: auto;
     border: none;
-    border-bottom: 2px solid #14a101;
+    border-bottom: 2px solid #92db8e;
+	margin-bottom:5%;
 }
 #CraftDescription{
-	font-size:70%;
+	font-size:x-large;
 	margin: auto;
     border: none;
-    border-bottom: 2px solid #14a101;
+    border-bottom: 2px solid #92db8e;
+	margin-bottom:5%;
 }
-div.image {
-   content:url(https://www.codenameone.com/img/blog/google-sign-in.png);
-}​
+
 .container {
   width: 100%;
 }
@@ -119,6 +129,8 @@ div.image {
 .progressbar {
   counter-reset: step;
   padding-left: 5%;
+  margin-bottom:10%;
+  direction:rtl;
 }
 .progressbar li {
   list-style: none;
@@ -127,8 +139,7 @@ div.image {
   position: relative;
   text-align: center;
   cursor: pointer;
-  font-family: 'Tinos', serif;
-  font-size: x-large;
+  font-family: 'Assistant', sans-serif;
 }
 .progressbar li:before {
   content: counter(step);
@@ -150,20 +161,20 @@ div.image {
   height: 1px;
   background-color: #ddd;
   top: 15px;
-  left: -50%;
+  left: 50%;
   z-index : -1;
 }
 .progressbar li:first-child:after {
   content: none;
 }
 .progressbar li.active {
-  color: green;
+  color: #92db8e;
 }
 .progressbar li.active:before {
-  border-color: green;
+  border-color: #92db8e;
 } 
 .progressbar li.active + li:after {
-  background-color: green;
+  background-color:#92db8e;
 }
 #FormBox2{
 	display:none;
@@ -174,9 +185,7 @@ div.image {
 .GoBack{
 	background-color:white;
 	border:none;
-	color:#14a101;
-	font-size: x-large;
-	float: left;
+	color:#92db8e;
 }
 .twoToneCenter {
   text-align: center;
@@ -184,6 +193,7 @@ div.image {
       position: sticky;
     bottom: 0;
     left: 100;
+	display:flex;
 }
 .twoToneButton {
   display: inline-block;
@@ -192,13 +202,10 @@ div.image {
 }
 
 .twoToneButton:active {
-  box-shadow: 0 0 10px #080808 inset, 0px 1px 0 #3b3b3b;
-  color: #ffffff;
-  background: #080808;
-  background: linear-gradient(to bottom, #3b3b3b 0%, #2e2e2e 50%, #141414 51%, #080808 100%);
+  color: #black;
 }
 .twoToneButton.spinning {
-  background-color: #212121;
+  
   padding-right: 30px;
 }
 .twoToneButton.spinning:after {
@@ -216,11 +223,11 @@ div.image {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  right: 6px;
-  top: 50%;
-  position: absolute;
-  border: 9px solid #000000;
-  border-right: 9px solid #14a101;
+  right: 11px;
+  top: 35%;
+  position:absolute;
+  border: 9px dashed white;
+  border-right: 9px solid #86b4e8;
   -webkit-animation: rotate360 0.5s infinite linear, exist 0.1s forwards ease;
           animation: rotate360 0.5s infinite linear, exist 0.1s forwards ease;
 }
@@ -250,35 +257,64 @@ div.image {
     margin: -8px 5px 0 0;
   }
 }
-body {
-  margin:0 auto;
-}
+
 button.button { 
-	width: 100%;
-    font-size: 4em;
-  border-radius: 100rem;
-  padding: 1rem;
-  font-family: 'Secular One', sans-serif;
-  padding: .5rem 3rem;
-  color:black;
-  border: solid 3px transparent;
-  background-image: linear-gradient(rgba(0, 144, 255, 1), rgba(20, 161, 1, 1)), linear-gradient(101deg, #0090ff, #14a101);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #fff inset;
-        position: sticky;
+  	width: 100%;
+    font-size: 1.75em;
+  	border-radius: 100rem;
+  	padding: 1rem;
+  	font-family: 'Assistant', sans-serif;
+  	padding: .5rem 3rem;
+  	color:white;
+  	border:none;
+  	background-color:#92db8e;
+  	position: sticky;
+    bottom: 0;
+}
+button.nextbutton { 
+  	width: 70%;
+    font-size: 1.75em;
+  	border-radius: 100rem;
+  	padding: 1rem;
+  	font-family: 'Assistant', sans-serif;
+  	padding: .5rem 3rem;
+  	color:white;
+  	background-color:#92db8e;
+	border:none;
+  	position: sticky;
+    bottom: 0;
+}
+button.backbutton { 
+  	width: 25%;
+	margin-left:10%;
+  	border-radius: 100rem;
+  	font-family: 'Assistant', sans-serif;
+  	color:black;
+  	background-color:white;
+	border:2px solid #92db8e;
+  	position: sticky;
+    bottom: 0;
+	opacity: .6;
+}
+#buttons{
+	text-align: center;
+    margin: 1em 0;
+    position: sticky;
     bottom: 0;
     left: 100;
+    display: flex;
 }
-}
+
+
 .ToolsNeeded1{
 	font-size: 70%;
     margin: auto;
     border: none;
-    border-bottom: 2px solid #14a101;
+    border-bottom: 2px solid #92db8e;
+	margin-bottom: 8%;
 }
 .inputStepInstructionsTex{
-	border-bottom: 2px solid #14a101;
+	border-bottom: 2px solid #92db8e;
 	font-size: 70%;
     margin: auto;
     border: none;
