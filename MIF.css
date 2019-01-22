@@ -1,0 +1,245 @@
+html {
+ 
+  background-color: white;
+}
+
+
+
+
+body{
+	text-align: center;
+}
+
+.projectImages{
+	width: 90%;
+	margin-top: 1em;
+    margin-bottom: 0em;
+    border:none;
+}
+
+#FinalImage{
+	margin-left: -.5em;
+    margin-right: -.5em;
+}
+
+.homeProjectImages{
+	width: 90%;
+	margin-top: 1em;
+    margin-bottom: 0em;
+    border:none;
+}
+
+.finalProjectImages{
+	width: 100%;
+	margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.projectImagesOutline{
+	margin: 1em;
+	background-color: white;
+	text-align: center;
+	border: 1px solid #86b4e8;
+}
+
+.stepsImagesOutline{
+	margin: 1em;
+	background-color: white;
+	text-align: center;
+	border: 1px solid #86b4e8;
+}
+
+.projectName{
+	padding-bottom: .2em;
+	font-size: 1.75em;
+	color: gray;
+	font-family: 'Assistant', sans-serif;
+}
+
+#craftTitle{
+	text-align: center;
+	font-size: 1.75em;
+	color: gray;
+	margin-bottom: .25em;
+    margin-top: .25em;
+    margin-left: 1em;
+    font-family: 'Assistant', sans-serif;
+}
+
+#crafterDiv{
+	text-align: right;
+	margin-right: .2em;
+	color: gray;
+}
+
+#crafterName{
+	text-align: right;
+	font-size: 1.25em;
+	color: #86b4e8;
+	margin-bottom: .25em;
+    margin-top: .25em;
+    vertical-align: super;
+    font-family: 'Assistant', sans-serif;
+}
+
+#craftDescription{
+	text-align: right;
+	font-size: 1.25em;
+	margin: .25em;
+	margin-right: .2em;
+	font-family: 'Assistant', sans-serif;
+	color: #86b4e8;
+}
+
+#userIcon{
+	font-size:40px;
+	color:#86b4e8;
+}
+
+#materialsList{
+	text-align: right;
+	list-style: none;
+	margin-right: 1em;
+}
+
+#materialsDiv{
+	text-align: right;
+	margin-right: .2em;
+}
+
+li{
+	background-position: 100% .4em;
+	font-family: 'Assistant', sans-serif;
+	color: #86b4e8;
+	font-size: 1.25em;
+}
+
+#materialsTitle{
+	margin-bottom: -.75em;
+	font-size: 1.75em;
+	color: gray;
+	font-family: 'Assistant', sans-serif;
+}
+
+.stepNumber{
+	font-weight: bold;
+	font-size: 1.75em;
+	text-align: right;
+	color: gray;
+	margin-right: .75em;
+	font-family: 'Assistant', sans-serif;
+
+}
+
+.instruction{
+	font-size: 1.25em;
+	padding-bottom: .5em;
+	text-align: right;
+    margin-right: .75em;
+    margin-left: .75em;
+    font-family: 'Assistant', sans-serif;
+    color: #86b4e8;
+
+}
+
+button.homePageButton { 
+	width: 88%;
+    font-size: 1.75em;
+  	padding: 1rem;
+  	border-radius: 100rem;
+  	font-family: 'Assistant', sans-serif;
+  	padding: .5rem 3rem;
+  	color:white;
+  	background-color: #92db8e;
+  	position: sticky;
+    bottom: 0;
+    border:none;
+}
+
+#homeButton{
+	font-size: 2em;
+    background-color: #92db8e;
+    border: none;
+    border-radius: 100rem;
+    color: white;
+    margin-left: 1.2em;
+    width: 2em;
+    height: 2em;
+     z-index: 1;
+}
+
+a{
+	color: gray;
+    text-decoration: none;
+}
+
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #86b4e8;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+#topDiv{
+	display: flex;
+    position: sticky;
+    top: 0;
+    margin-right: -.5em;
+    margin-left: -.5em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
