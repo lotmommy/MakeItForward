@@ -67,7 +67,7 @@
 <span>תמונה אחרונה</span>
 <div>
   <label for="files" id="FinalPicture" class="btn" style="font-size: x-large; margin-right: 2%; color: #86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label>
-  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file">
+  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" id = "finalPic">
 </div>
 </div>
 <button onclick="ShowStep2()" class="button" id="NextButton">להוסיף כלי</button>
@@ -126,12 +126,16 @@ $(function(){
 });
 
 function ShowStep2() {
-	$("#FormBox").hide();
-	$("#FormBox2").show();
-	$("#FormBox3").hide();
-	$("#Step2Icon").addClass("active");
-	$("#Step1Icon").addClass("active");
-	$("#Step3Icon").removeClass("active");
+	if(($("#CraftTitle").val())!== "" && ($("#CraftDescription").val())!== "" && ($("#finalPic").val())!== null){
+		$("#FormBox").hide();
+		$("#FormBox2").show();
+		$("#FormBox3").hide();
+		$("#Step2Icon").addClass("active");
+		$("#Step1Icon").addClass("active");
+		$("#Step3Icon").removeClass("active");
+	}else{
+		alert("Please fill in all fields");
+	}
 	
 }
 function ShowStep3() {
