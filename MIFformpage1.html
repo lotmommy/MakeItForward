@@ -246,6 +246,7 @@ function uploadAllImages(stepNum){
 		Meta.toolNum = Object.keys(Tools).length;
 		Meta.UserOwner = auth.currentUser.uid;
 		Meta.FinishImage = base64ImagesGetter().FinishImage;
+		Meta.Author = auth.currentUser.email;
 		console.log(Steps,Tools);
 
 		//putting the data into the JSON tree properly formatted
