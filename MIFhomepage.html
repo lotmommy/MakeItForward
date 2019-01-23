@@ -6,12 +6,10 @@
 	<link rel = "stylesheet" href="MIF.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
-
-<script src=></script>
 <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
+    var config = {
     apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
     authDomain: "makeitforward-fb720.firebaseapp.com",
     databaseURL: "https://makeitforward-fb720.firebaseio.com",
@@ -20,10 +18,20 @@
     messagingSenderId: "668998987480"
   };
   firebase.initializeApp(config);
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </script>
 </head>
 <body onload="myFunction()">
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Search By Category</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">cat1</a>
+    <a href="#about">cat2</a>
+    <a href="#contact">cat3</a>
+    <a href="#contact">cat4</a>
+    <a href="#contact">cat5</a>
+    <a href="#contact">cat6</a>
+  </div>
+</div>
 	<div id="loader"></div>
 
 	<div style="display:none;" id="myDiv" class="animate-bottom">
@@ -38,21 +46,17 @@
 	</div>
 
 	<script>
-
 		var myVar;
-
 		function myFunction() {
   			myVar = setTimeout(showPage, 2000);
 		}
-
 		function showPage() {
   			document.getElementById("loader").style.display = "none";
   			document.getElementById("myDiv").style.display = "block";
 		}
-
 		function goToCreatePage(){
 			if(firebase.auth().currentUser===null){
-				window.location.href='index.html';
+				window.location.href='signin.html';
 			}else{
 				window.location.href='MIFformpage1.html';
 			}
@@ -64,7 +68,6 @@
 		dbRef.on("value", function(snapshot){
 			//console.log("Database was changed", snapshot.val());
 			$("#list").html(""); //clear all inner tags
-
 			snapshot.forEach(function(childSnap){
 				console.log(childSnap.val());
 				all_projects.push(childSnap);
@@ -72,11 +75,7 @@
 			console.log(all_projects);
 			loadPage();
 		});
-
-
 		function loadPage(){
-
-
 			for (var i = 0; i < all_projects.length; i++) {
 				o = all_projects[i];
 				PROJECTIMAGE= o.val().METADATA.FinishImage;
@@ -84,7 +83,6 @@
 		
 			}
 		}
-
 	</script>
 </body>
 </html>
