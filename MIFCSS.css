@@ -1,5 +1,4 @@
 
-
 #Search,#Add,#User{
 	padding-right:8%;
 	color:white;
@@ -24,6 +23,7 @@
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
+  color: gray;
 	font-size: 1.75em;
 	font-family: 'Assistant', sans-serif;
 	border: 1px solid #86b4e8;
@@ -33,6 +33,7 @@
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
+  color: gray;
 	font-size: 1.75em;
 	font-family: 'Assistant', sans-serif;
 	border: 1px solid #86b4e8;
@@ -41,13 +42,21 @@
 	margin-bottom:8%;
 	text-align:center;
 	display:grid;
+  color: gray;
 	font-size: 1.75em;
 	font-family:  'Assistant', sans-serif;
 	
 }
+
+.tooltext{
+  color: #86b4e8;
+  font-size: x-large;
+}
+
 .InputStepImage{
 	text-align:right;
 	display:grid;
+  color: gray;
 	font-size: 1.75em;
 	font-family: 'Assistant', sans-serif;
 }
@@ -55,6 +64,7 @@
 	margin-bottom:8%;
 	text-align:center;
 	font-size: 1.75em;
+  color: gray;
 	font-family: 'Assistant', sans-serif;
 	margin-top: 8%;
 	border: 1px solid #86b4e8;
@@ -63,6 +73,7 @@
 	margin-bottom: 8%;
     text-align: center;
     display: grid;
+    color: gray;
     font-size: 1.75em;
     font-family: 'Assistant', sans-serif;
 }
@@ -81,6 +92,14 @@
 .AddInputButton{
 	text-align: center;
 }
+
+.StepText{
+  color: #86b4e8;
+  height: 3em;
+  width: 10em;
+  font-size: x-large;
+}
+
 .AddStepText{
 	font-size:3em;
 	font-family: 'Secular One', sans-serif;
@@ -111,12 +130,14 @@
 	font-size:x-large;
 	margin: auto;
     border: none;
+    color: #86b4e8;
     border-bottom: 2px solid #92db8e;
 	margin-bottom:5%;
 }
 #CraftDescription{
 	font-size:x-large;
 	margin: auto;
+  color: #86b4e8;
     border: none;
     border-bottom: 2px solid #92db8e;
 	margin-bottom:5%;
@@ -139,6 +160,7 @@
   position: relative;
   text-align: center;
   cursor: pointer;
+  color: gray;
   font-family: 'Assistant', sans-serif;
 }
 .progressbar li:before {
