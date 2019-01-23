@@ -16,20 +16,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script src="ProjectGrabber.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
-    authDomain: "makeitforward-fb720.firebaseapp.com",
-    databaseURL: "https://makeitforward-fb720.firebaseio.com",
-    projectId: "makeitforward-fb720",
-    storageBucket: "makeitforward-fb720.appspot.com",
-    messagingSenderId: "668998987480"
-  };
-  firebase.initializeApp(config);
-</script>
-<script src="js/ProjectGrabber.js"></script>
 <style>
 	#ToolsNeeded1{
 	font-size: 70%;
@@ -67,11 +55,25 @@
 <span>תמונה אחרונה</span>
 <div>
   <label for="files" id="FinalPicture" class="btn" style="font-size: x-large; margin-right: 2%; color: #86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label>
-  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" >
+  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" onchange='encodeImageFinalPicture(this)' >
 </div>
 </div>
-<button onclick="ShowStep2()" class="button" id="NextButton">להוסיף כלי</button>
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Choose Category</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">cat1</a>
+    <a href="#about">cat2</a>
+    <a href="#contact">cat3</a>
+    <a href="#contact">cat4</a>
+    <a href="#contact">cat5</a>
+    <a href="#contact">cat6</a>
+  </div>
+</div>
+<div id="buttons">
+<button onclick="ShowStep2()" class="button nextbutton" id="NextButton">להוסיף כלי</button>
+<button onclick="gotohome()" class="backbutton"><i class="fa fa-home" style="font-size: 2.5em;"></i></button>
 
+</div>
 </div>
 
 <div id="FormBox2">
@@ -97,7 +99,7 @@
 <div id="UploadCraft">
 </div>
 <div class="twoToneCenter">
-<button class="twoToneButton button nextbutton" id="UploadCraftButton">הוסף</button>
+<button class="twoToneButton button nextbutton" id="UploadCraftButton" onclick="generateJSON()">הוסף</button>
 <button onclick="ShowStep2()" class="backbutton GoBack"><i class="fa fa-angle-double-right" style="font-size: 2.5em;"></i></button>
 
 </div>
@@ -106,6 +108,25 @@
 function init(){
 	drawStep();
 	drawTool();
+}
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 $(function(){
     
@@ -160,6 +181,9 @@ function ShowStep1() {
 	$("#Step3Icon").removeClass("active");
 	
 }
+function gotohome(){
+	window.location.href='index.html';
+}
 let currentNumberOfSteps = 1;
 let currentNumberOfTools = 1;
 function drawStep(){
@@ -170,8 +194,8 @@ function drawStep(){
 	const inputStepInstructions = "InputStepInstructions_"+currentNumberOfSteps;
 	const inputStepInstructionsText = "inputStepInstructionsText_"+currentNumberOfSteps;
 	//Defining the reusable parts for later
-	let inputImageTemplate = '<div style="border: 1px solid #86b4e8;padding-right:.5em;margin-left:1em;margin-right:1em;margin-top:1em;border-bottom:none;" class="InputStepImage" id="'+imageStepId+'" ><span>תמונת שלב '+currentNumberOfSteps+'</span><label for="files" class="btn" style="font-size: x-large; margin-right: 2%; color:#86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label><input class="StepImage" style="visibility:hidden;" type="file"></div>';
-	let inputTextTemplate = '<div style="border: 1px solid #86b4e8;margin-left:1em;margin-right:1em;margin-bottom:2em;border-top:none;" id="'+inputStepInstructions+'" class="InputStepInstructions borderedItem"><span>הוראות לשלב '+currentNumberOfSteps+'</span><textarea style="height:60%;width:20em;margin:auto;margin-bottom:5%;border:none;border-bottom:3px solid #92db8e" id="'+inputStepInstructionsText+'" class="StepText"></textarea></div>';
+	let inputImageTemplate = '<div style="border: 1px solid #86b4e8;padding-right:.5em;margin-left:1em;margin-right:1em;margin-top:1em;border-bottom:none;" class="InputStepImage" id="'+imageStepId+'" ><span>תמונת שלב '+currentNumberOfSteps+'</span><label for="files" class="btn" style="font-size: x-large; margin-right: 2%; color:#86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label><input class="StepImage" style="visibility:hidden;" type="file" onchange="encodeImageFileAsURL(this)"></div>';
+	let inputTextTemplate = '<div style="border: 1px solid #86b4e8;margin-left:1em;margin-right:1em;margin-bottom:2em;border-top:none;" id="'+inputStepInstructions+'" class="InputStepInstructions borderedItem"><span>הוראות לשלב '+currentNumberOfSteps+'</span><textarea style="height:3em;text-align:right;width:10em;margin:auto;margin-bottom:5%;border:none;border-bottom:3px solid #92db8e" id="'+inputStepInstructionsText+'" class="StepText"></textarea></div>';
 	let inputAddStepButtonTemplate = '<div id="AddInputButton"><span id="AddStepText">הוסף שלב</span><i id="AddStepSquare" class="fa fa-plus-square" onclick="drawStep()"></i></div>';
 	//Adding 1 to current step
 	currentNumberOfSteps++;
@@ -180,7 +204,7 @@ function drawStep(){
 	//updating the values on the upload inputAddStepButtonTemplate
 }
 function drawTool(){
-	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' כלים הדרושים</span><input type="text" style="margin:auto;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
+	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' כלים הדרושים</span><input type="text" style="margin:auto;text-align:right;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
 	$("#InputTool").append(inputToolTemplate);
 	currentNumberOfTools++;
 }
@@ -239,7 +263,11 @@ function uploadAllImages(stepNum){
 		//uploads the data
 		db = firebase.database();
 		dbref = db.ref('Users/');
-		dbref.push(currentItem.PROJECTID);
+		dbref.push(currentItem.PROJECTID).then(function(e){
+				window.location.href='index.html';
+		
+		});
+
 	}
 	//visual tree
 	let currentItem = {
