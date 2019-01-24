@@ -1,3 +1,61 @@
+<html>
+<head>
+	<title>FormPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="MIFCSS.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Secular+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
+    authDomain: "makeitforward-fb720.firebaseapp.com",
+    databaseURL: "https://makeitforward-fb720.firebaseio.com",
+    projectId: "makeitforward-fb720",
+    storageBucket: "makeitforward-fb720.appspot.com",
+    messagingSenderId: "668998987480"
+  };
+  firebase.initializeApp(config);
+  var base64Images = {};
+  var listLength = 1;
+</script>
+<script src="ProjectGrabber.js"></script>
+
+<style>
+	#ToolsNeeded1{
+	font-size: 70%;
+    margin: auto;
+    border: none;
+    border-bottom: 2px solid #14a101;
+}
+#inputStepInstructionsText{
+	border-bottom: 2px solid #14a101;
+	font-size: 70%;
+    margin: auto;
+    border: none;
+}
+</style>
+</head>
+<body onload="init()">
+    <div class="container">
+      <ul class="progressbar">
+        <li id= "Step1Icon"class="active">תיאור הפרויקט</li>
+		<li id= "Step2Icon">כלים וחומרים</li>
+	    <li id= "Step3Icon">שלבי עבודה</li>
+      </ul>
+    </div>
 <div id="FormBox">
 
 <div id="InputCraft"> 
@@ -18,6 +76,7 @@
 <div class="dropdown">
 <p>Choose Category</p>
   <select class="dropbtn" id="myDropdown">
+    <option>veiw all</option>
     <option>טכנולוגיה</option>
     <option>רהיטים</option>
     <option>הישרדות</option>
