@@ -36,9 +36,9 @@
 <body onload="init()">
     <div class="container">
       <ul class="progressbar">
-        <li id= "Step1Icon"class="active">פרטי הפרויקט</li>
-		<li id= "Step2Icon">להוסיף כלי</li>
-	    <li id= "Step3Icon">הוספת צעדים</li>
+        <li id= "Step1Icon"class="active">תיאור הפרויקט</li>
+		<li id= "Step2Icon">כלים וחומרים</li>
+	    <li id= "Step3Icon">שלבי עבודה</li>
       </ul>
     </div>
 <div id="FormBox">
@@ -48,11 +48,11 @@
 <input type="text" id="CraftTitle">
 </div>
 <div  id="InputDescription">
-<span>תיאור פרויקט </span>
+<span>תיאור הפרויקט </span>
 <input type="text" id="CraftDescription">
 </div>
 <div class="InputFinalImage">
-<span>תמונה אחרונה</span>
+<span>תמונת הפרויקט המוגמר</span>
 <div>
   <label for="files" id="FinalPicture" class="btn" style="font-size: x-large; margin-right: 2%; color: #86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label>
   <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" onchange='encodeImageFinalPicture(this)' >
@@ -70,7 +70,7 @@
   </div>
 </div>
 <div id="buttons">
-<button onclick="ShowStep2()" class="button nextbutton" id="NextButton">להוסיף כלי</button>
+<button onclick="ShowStep2()" class="button nextbutton" id="NextButton">לשלב הבא</button>
 <button onclick="gotohome()" class="backbutton"><i class="fa fa-home" style="font-size: 2.5em;"></i></button>
 
 </div>
@@ -85,7 +85,7 @@
 		<button id="AddToolText" onclick="deleteTool()">-</button>
 </div>
 <div id="buttons">
-<button onclick="ShowStep3()" class="nextbutton">הוספת צעדים</button>
+<button onclick="ShowStep3()" class="nextbutton">לשלב הבא</button>
 <button onclick="ShowStep1()" class="backbutton"><i class="fa fa-angle-double-right" style="font-size: 2.5em;"></i></button>
 </div>
 </div>
@@ -99,7 +99,7 @@
 <div id="UploadCraft">
 </div>
 <div class="twoToneCenter">
-<button class="twoToneButton button nextbutton" id="UploadCraftButton" onclick="generateJSON()">הוסף</button>
+<button class="twoToneButton button nextbutton" id="UploadCraftButton" onclick="generateJSON()">סיום</button>
 <button onclick="ShowStep2()" class="backbutton GoBack"><i class="fa fa-angle-double-right" style="font-size: 2.5em;"></i></button>
 
 </div>
@@ -204,7 +204,7 @@ function drawStep(){
 	//updating the values on the upload inputAddStepButtonTemplate
 }
 function drawTool(){
-	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' כלים הדרושים</span><input type="text" style="margin:auto;text-align:right;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
+	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' חומר/כלי</span><input type="text" style="margin:auto;text-align:right;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
 	$("#InputTool").append(inputToolTemplate);
 	currentNumberOfTools++;
 }
