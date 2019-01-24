@@ -67,25 +67,20 @@
 	</div>
 
 	<script>
-
 		var myVar;
-
 		function myFunction() {
   			myVar = setTimeout(showPage, 2000);
   			grabSteps();
 		}
-
 		function showPage() {
   			document.getElementById("loader").style.display = "none";
   			document.getElementById("myDiv").style.display = "block";
 		}
-
 		let extractGetParameter = function(key) {
         	let a = new URLSearchParams(window.location.search);
         	return a.get(key);
    		 };
    		var steps=[];
-
    		//Gets all the steps into a snapshot and stores them for later use
    		function grabSteps(){
 		let db = firebase.database();
@@ -98,7 +93,6 @@
 				snapshot.forEach(function(snap){
 					console.log(snap.val());
 					steps.push(snapshot.val());
-
 				});
 				grabMetaData();
 				addImageStep();
@@ -112,15 +106,13 @@
 		function grabMetaData(){
    			//grabbing values from craft info list
    			let Title = steps[0].METADATA.CraftTitle;
-   			let Author = steps[0].METADATA.Author;
+   			let Author = steps[0].METADATA.UserOwner;
    			let Desc = steps[0].METADATA.CraftDescription;
-
    			//setting the appropriate fields
    			$("#craftTitle").html(Title);
-   			$("#crafterName").html(Author);
+   			$("#crafterName").text(Author);
    			$("#craftDescription").html(Desc);
    		}
-
 		STEPNUM = 1;	
 	   	function addImageStep(){
 	   		var IMAGE_URL;
@@ -128,8 +120,6 @@
 	   		let FinalImage = steps[0].METADATA.FinishImage;
 	   		const FinalImageTemplate = '<img class = "finalProjectImages" src = "'+FinalImage+'">';
 	   		$("#FinalImage").append(FinalImageTemplate);
-
-
 	   		for (var i = 0; i < steps[0].METADATA.stepNum; i++) {
 	   			console.log("YOU GOT HERE HURRAY");
 	   			var stepMarker = 'Step'+(i+1);
@@ -140,7 +130,6 @@
 	   			$("#stepsList").append(StepTemplate);
 	   			STEPNUM++;
 	   		}
-
 	   		$("#stepsList").each(function(index){
 	   			console.log($(this).text());
 	   		});
@@ -148,21 +137,14 @@
 	   			var toolMarker = 'Tool'+(i+1);
 	   			var tool = steps[0].TOOLS[toolMarker];
 	   			$("#materialsList").append('<li>'+tool+'</li>');
-
 	   		}
-
-
-
-
 	   		
 	   		
 	   		
-
 	   		
 	   		
 	   		
 	   	}
-
 	</script>
 
 
