@@ -144,7 +144,7 @@ $(function(){
     
 });
 function ShowStep2() {
-	if($("#CraftTitle").val()!== "" && $("#CraftDescription").val()!== "" && $(".FinalPicture") !== undefined){
+	if($("#CraftTitle").val()!== "" && $("#CraftDescription").val()!== "" && $(".FinalPicture") !== ""){
 		$("#FormBox").hide();
 		$("#FormBox2").show();
 		$("#FormBox3").hide();
@@ -227,6 +227,7 @@ function uploadAllImages(stepNum){
 }
 	
 	function generateJSON(){
+		if($("#Tool_1").val()!== "")
 		//object lists for Steps, Tools, and Meta
 		let Steps = {};
 		let Tools = {};
