@@ -1,4 +1,4 @@
-  var config = {
+   var config = {
     apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
     authDomain: "makeitforward-fb720.firebaseapp.com",
     databaseURL: "https://makeitforward-fb720.firebaseio.com",
@@ -7,10 +7,13 @@
     messagingSenderId: "668998987480"
   };
   firebase.initializeApp(config);
-  let globalDb = firebase.database();
-  let dbRef = globalDb.ref("Users/");
+
+  var globalDb = firebase.database();
+  var dbRef = globalDb.ref("Users/");
    //Array to store all user IDS
-  let usrRef = [];
+  var usrRef = [];
+
+
 
 
 
@@ -49,9 +52,10 @@
   	});
   }
 
-	let base64Images = {};
-	listLength = 1;
-	function encodeImageFileAsURL(element) {
+
+	var listLength = 1;
+	function encodeImageFileAsURL(element,base64Images) {
+    console.log("YOU MADE IT!!");
 	  var file = element.files[0];
 	  var reader = new FileReader();
 	  reader.onloadend = function() {
@@ -60,14 +64,14 @@
 	    listLength++;
 	  }
 	  reader.readAsDataURL(file);
-	  console.log(base64Images);
+	  console.log("debug: ", base64Images);
 	}
 
-	function base64ImagesGetter(){
+	function base64ImagesGetter(base64Images){
 		return base64Images;
 	}
 
-	function encodeImageFinalPicture(element) {
+	function encodeImageFinalPicture(element,base64Images) {
 	  var file = element.files[0];
 	  var reader = new FileReader();
 	  reader.onloadend = function() {
