@@ -271,7 +271,7 @@ function uploadAllImages(stepNum){
 			Meta.CraftDescription = $("#CraftDescription").val();
 			Meta.stepNum = Object.keys(Steps).length;
 			Meta.toolNum = Object.keys(Tools).length;
-			Meta.UserOwner = auth.currentUser.uid;
+			Meta.UserOwner = auth.currentUser.email;
 			Meta.FinishImage = base64ImagesGetter(base64Images).FinishImage;
 			Meta.Category = $("#myDropdown option:selected").text();
 			console.log(Steps,Tools);
