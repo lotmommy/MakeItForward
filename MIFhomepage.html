@@ -22,7 +22,7 @@
 </head>
 <body onload="myFunction()">
 <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Search By Category</button>
+  <button onclick="myFunction2()" class="dropbtn">Search By Category</button>
   <div id="myDropdown" class="dropdown-content">
     <a href="#home">cat1</a>
     <a href="#about">cat2</a>
@@ -42,10 +42,28 @@
 
 		
 		</div>
-		<button onclick="goToCreatePage()" class="homePageButton" >פרוייקט חדש</button>
+		<button onclick="goToCreatePage()" class="homePageButton" >להעלות פרוייקט חדש</button>
 	</div>
-
 	<script>
+				/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction2() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 		var myVar;
 		function myFunction() {
   			myVar = setTimeout(showPage, 2000);
@@ -54,6 +72,7 @@
   			document.getElementById("loader").style.display = "none";
   			document.getElementById("myDiv").style.display = "block";
 		}
+		
 		function goToCreatePage(){
 			if(firebase.auth().currentUser===null){
 				window.location.href='signin.html';
@@ -75,6 +94,7 @@
 			console.log(all_projects);
 			loadPage();
 		});
+		
 		function loadPage(){
 			for (var i = 0; i < all_projects.length; i++) {
 				o = all_projects[i];
@@ -83,6 +103,8 @@
 		
 			}
 		}
+		
+
 	</script>
 </body>
 </html>
