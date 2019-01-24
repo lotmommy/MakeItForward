@@ -16,8 +16,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-<script src="ProjectGrabber.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBj34sidpPNHaIu-VTZnuiiJ0dtSwSvnh8",
+    authDomain: "makeitforward-fb720.firebaseapp.com",
+    databaseURL: "https://makeitforward-fb720.firebaseio.com",
+    projectId: "makeitforward-fb720",
+    storageBucket: "makeitforward-fb720.appspot.com",
+    messagingSenderId: "668998987480"
+  };
+  firebase.initializeApp(config);
+
+  var base64Images = {};
+  var listLength = 1;
+</script>
+<script src="ProjectGrabber.js"></script>
+
 <style>
 	#ToolsNeeded1{
 	font-size: 70%;
@@ -55,19 +71,20 @@
 <span>תמונת הפרויקט המוגמר</span>
 <div>
   <label for="files" id="FinalPicture" class="btn" style="font-size: x-large; margin-right: 2%; color: #86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label>
-  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" onchange='encodeImageFinalPicture(this)' >
+  <input id="files" class="FinalPicture" style="visibility:hidden;" type="file" onchange="encodeImageFinalPicture(this,base64Images)" >
 </div>
 </div>
 <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Choose Category</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#home">cat1</a>
-    <a href="#about">cat2</a>
-    <a href="#contact">cat3</a>
-    <a href="#contact">cat4</a>
-    <a href="#contact">cat5</a>
-    <a href="#contact">cat6</a>
-  </div>
+<p>Choose Category</p>
+  <select class="dropbtn" id="myDropdown">
+    <option>cat1</option>
+    <option>cat2</option>
+    <option>cat3</option>
+    <option>cat4</option>
+    <option>cat5</option>
+    <option>cat6</option>
+
+ </select>
 </div>
 <div id="buttons">
 <button onclick="ShowStep2()" class="button nextbutton" id="NextButton">לשלב הבא</button>
@@ -82,10 +99,9 @@
 </div>
 <div id="AddToolButton">
 		<button id="AddToolText" onclick="drawTool()">+</button>
-		<button id="AddToolText" onclick="deleteTool()">-</button>
 </div>
 <div id="buttons">
-<button onclick="ShowStep3()" class="nextbutton">לשלב הבא</button>
+<button onclick="ShowStep3()" class="nextbutton">הוספת צעדים</button>
 <button onclick="ShowStep1()" class="backbutton"><i class="fa fa-angle-double-right" style="font-size: 2.5em;"></i></button>
 </div>
 </div>
@@ -109,25 +125,7 @@ function init(){
 	drawStep();
 	drawTool();
 }
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
 $(function(){
     
     var twoToneButton = document.querySelector('.twoToneButton');
@@ -193,9 +191,10 @@ function drawStep(){
 	const imageUploadId= "InputUploadImage_"+currentNumberOfSteps;
 	const inputStepInstructions = "InputStepInstructions_"+currentNumberOfSteps;
 	const inputStepInstructionsText = "inputStepInstructionsText_"+currentNumberOfSteps;
+	var d = new Date();
 	//Defining the reusable parts for later
-	let inputImageTemplate = '<div style="border: 1px solid #86b4e8;padding-right:.5em;margin-left:1em;margin-right:1em;margin-top:1em;border-bottom:none;" class="InputStepImage" id="'+imageStepId+'" ><span>תמונת שלב '+currentNumberOfSteps+'</span><label for="files" class="btn" style="font-size: x-large; margin-right: 2%; color:#86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label><input class="StepImage" style="visibility:hidden;" type="file" onchange="encodeImageFileAsURL(this)"></div>';
-	let inputTextTemplate = '<div style="border: 1px solid #86b4e8;margin-left:1em;margin-right:1em;margin-bottom:2em;border-top:none;" id="'+inputStepInstructions+'" class="InputStepInstructions borderedItem"><span>הוראות לשלב '+currentNumberOfSteps+'</span><textarea style="height:3em;text-align:right;width:10em;margin:auto;margin-bottom:5%;border:none;border-bottom:3px solid #92db8e" id="'+inputStepInstructionsText+'" class="StepText"></textarea></div>';
+	let inputImageTemplate = '<div style="border: 1px solid #86b4e8;padding-right:.5em;margin-left:1em;margin-right:1em;margin-top:1em;border-bottom:none;" class="InputStepImage" id="'+imageStepId+'" ><span>תמונת שלב '+currentNumberOfSteps+'</span><label for="img-'+d.getTime()+'" for="files" class="btn" style="font-size: x-large; margin-right: 2%; color:#86b4e8;"><i class="fa fa-upload"></i> בחר תמונה</label><input id="img-'+d.getTime()+'" class="StepImage" style="visibility:hidden;" type="file" onchange="encodeImageFileAsURL(this,base64Images)"></div>';
+	let inputTextTemplate = '<div style="border: 1px solid #86b4e8;margin-left:1em;margin-right:1em;margin-bottom:2em;border-top:none;" id="'+inputStepInstructions+'" class="InputStepInstructions borderedItem"><span>הוראות לשלב '+currentNumberOfSteps+'</span><textarea style="height:60%;width:20em;margin:auto;margin-bottom:5%;border:none;border-bottom:3px solid #92db8e" id="'+inputStepInstructionsText+'" class="StepText"></textarea></div>';
 	let inputAddStepButtonTemplate = '<div id="AddInputButton"><span id="AddStepText">הוסף שלב</span><i id="AddStepSquare" class="fa fa-plus-square" onclick="drawStep()"></i></div>';
 	//Adding 1 to current step
 	currentNumberOfSteps++;
@@ -204,7 +203,7 @@ function drawStep(){
 	//updating the values on the upload inputAddStepButtonTemplate
 }
 function drawTool(){
-	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' חומר/כלי</span><input type="text" style="margin:auto;text-align:right;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
+	let inputToolTemplate = '<div style="margin:1em;border:1px solid #86b4e8;"><span>'+currentNumberOfTools+' כלים הדרושים</span><input type="text" style="margin:auto;text-align:right;border:none;border-bottom:3px solid #92db8e;margin-bottom: 5%;" id="Tool_'+currentNumberOfTools+'"" class="tooltext"></div>';
 	$("#InputTool").append(inputToolTemplate);
 	currentNumberOfTools++;
 }
@@ -235,7 +234,7 @@ function uploadAllImages(stepNum){
 		let Images = {};
 		//grabbing nessicary data from 
 		$(".StepImage").each(function(index){
-			Images = base64ImagesGetter();
+			Images = base64ImagesGetter(base64Images);
 		})
 		$(".StepText").each(function(index){
 			console.log($(this).val());
@@ -252,7 +251,8 @@ function uploadAllImages(stepNum){
 		Meta.stepNum = Object.keys(Steps).length;
 		Meta.toolNum = Object.keys(Tools).length;
 		Meta.UserOwner = auth.currentUser.uid;
-		Meta.FinishImage = base64ImagesGetter().FinishImage;
+		Meta.FinishImage = base64ImagesGetter(base64Images).FinishImage;
+		Meta.Category = $("#myDropdown option:selected").text();
 		console.log(Steps,Tools);
 		//putting the data into the JSON tree properly formatted
 		currentItem.PROJECTID.STEPS = JSON.parse(JSON.stringify(Steps));
