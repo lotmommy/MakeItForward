@@ -23,7 +23,7 @@
 <body onload="myFunction()">
 <div class="dropdown">
 <p>Choose Category</p>
-  <select class="dropbtn" id="myDropdown">
+  <select class="dropbtn" id="myDropdown" onChange="filter()">
     <option>cat1</option>
     <option>cat2</option>
     <option>cat3</option>
@@ -48,6 +48,19 @@
 	</div>
 	</div>
 	<script>
+		
+		function filter() {
+			$("#list").html(""); //clear all inner tags
+			
+			for (var i = 0; i < all_projects.length; i++) {
+				o = all_projects[i];
+				PROJECTIMAGE= o.val().METADATA.FinishImage;
+				if($(myDropdown).children("option:selected").val().equals(o.val().METADATA.Category) {
+					$("#list").append("<div class='projectImagesOutline'> <a href = 'MIFindividualCraftPage-updated.html?id=" + o.key + "'> <img class='homeProjectImages' src ='"+ PROJECTIMAGE +"''> <div class = 'projectName'>" + o.val().METADATA.CraftTitle + "</a></div>");
+				}
+			}
+		}
+		
 		var myVar;
 		function myFunction() {
   			myVar = setTimeout(showPage, 2000);
