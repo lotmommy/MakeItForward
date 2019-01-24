@@ -20,17 +20,18 @@
   firebase.initializeApp(config);
   </script>
 </head>
-<body >
+<body onload="myFunction()">
 <div class="dropdown">
-  <button onclick="myFunction2()" class="dropbtn">Search By Category</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#home">cat1</a>
-    <a href="#about">cat2</a>
-    <a href="#contact">cat3</a>
-    <a href="#contact">cat4</a>
-    <a href="#contact">cat5</a>
-    <a href="#contact">cat6</a>
-  </div>
+<p>Choose Category</p>
+  <select class="dropbtn" id="myDropdown">
+    <option>cat1</option>
+    <option>cat2</option>
+    <option>cat3</option>
+    <option>cat4</option>
+    <option>cat5</option>
+    <option>cat6</option>
+
+ </select>
 </div>
 	<div id="loader"></div>
 
@@ -42,42 +43,19 @@
 
 		
 		</div>
+		<div id="buttons">
 		<button onclick="goToCreatePage()" class="homePageButton" >להעלות פרוייקט חדש</button>
 	</div>
+	</div>
 	<script>
-				/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction2() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-		 var myVar;
-		 function myFunction() {
-   			myVar = setTimeout(showPage, 2000);
-		 }
-		
-
+		var myVar;
+		function myFunction() {
+  			myVar = setTimeout(showPage, 2000);
+		}
 		function showPage() {
-    		document.getElementById("loader").style.display = "none";
+  			document.getElementById("loader").style.display = "none";
   			document.getElementById("myDiv").style.display = "block";
 		}
-
-		// document. {
-  // 			document.getElementById("loader").style.display = "none";
-  // 			document.getElementById("myDiv").style.display = "block";
-		// }
 		
 		function goToCreatePage(){
 			if(firebase.auth().currentUser===null){
@@ -108,9 +86,9 @@ window.onclick = function(event) {
 				$("#list").append("<div class='projectImagesOutline'> <a href = 'MIFindividualCraftPage-updated.html?id=" + o.key + "'> <img class='homeProjectImages' src ='"+ PROJECTIMAGE +"''> <div class = 'projectName'>" + o.val().METADATA.CraftTitle + "</a></div>");
 		
 			}
-			myFunction();
 		}
 		
+
 	</script>
 </body>
 </html>
